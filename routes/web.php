@@ -10,3 +10,6 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/login', function () {
+    return 'Halaman Login Sementara';
+})->name('login');
