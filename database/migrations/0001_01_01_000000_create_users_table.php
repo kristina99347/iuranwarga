@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nohp');
             $table->text('address');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable(); // ✅ Tambahkan ini
 
             $table->enum('level', ['warga', 'admin']);
             $table->string('password');
