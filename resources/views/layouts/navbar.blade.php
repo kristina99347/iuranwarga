@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+<nav class="navbar navbar-expand-lg navbar-danger bg-danger py-3">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#">IURAN<span class="text-success">WARGA</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

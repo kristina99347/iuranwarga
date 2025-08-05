@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('nohp');
             $table->text('address');
+            $table->string('email')->unique();
+
             $table->enum('level', ['warga', 'admin']);
             $table->string('password');
             $table->rememberToken();
