@@ -7,15 +7,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('email')->unique()->nullable()->after('name');
-        });
+        // Kosongkan karena kolom email sudah dibuat di create_users_table
     }
 
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('email');
-        });
+        // Tidak perlu drop kolom email karena tidak ditambahkan di sini
     }
 };

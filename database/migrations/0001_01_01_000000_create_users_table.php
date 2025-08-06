@@ -18,23 +18,22 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('nohp');
             $table->text('address');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable(); // ✅ Tambahkan ini
-
+            $table->string('email')->unique()->nullable(); // ✅ Boleh null agar tidak error saat seeding
+            $table->timestamp('email_verified_at')->nullable();
             $table->enum('level', ['warga', 'admin']);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
 
-        // TABLE: password_reset_tokens (standar Laravel)
+        // TABLE: password_reset_tokens (standar Laravel untuk reset password)
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
-        // TABLE: sessions (standar Laravel)
+        // TABLE: sessions (untuk login session)
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();

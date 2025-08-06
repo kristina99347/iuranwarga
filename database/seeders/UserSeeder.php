@@ -22,9 +22,10 @@ class UserSeeder extends Seeder
 
         // Buat user warga
         User::create([
-            'name' => 'Warga',
+            'name' =>  'Warga',
             'email' => 'warga@gmail.com',
             'password' => Hash::make('warga123'),
         ]);
+
     }
 }
