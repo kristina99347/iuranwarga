@@ -16,7 +16,7 @@ Route::get('/', [HomeController::class, 'index'])
 
 // ✅ Login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login'])->name('loginn');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // ✅ Register
@@ -41,3 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])
     ->middleware('auth')
     ->name('home');
+Route::get('/warga', [WargaController::class, 'index'])->name('warga.index');
+Route::get('/warga/create', [WargaController::class, 'create'])->name('warga.create');
+Route::post('/warga/store', [WargaController::class, 'store'])->name('warga.store');

@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dues_categories', function (Blueprint $table) {
+        Schema::create('iurans', function (Blueprint $table) {
             $table->id();
-            $table->enum('period', ['mingguan', 'bulanan', 'tahunan']);
-            $table->decimal('nominal', 10, 2);
-            $table->enum('status', ['aktif', 'tidak aktif']);
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dues_categories');
+        Schema::dropIfExists('iurans');
     }
 };

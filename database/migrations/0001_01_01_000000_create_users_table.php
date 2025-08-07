@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('nohp');
             $table->text('address');
-            $table->string('email')->unique()->nullable(); // ✅ Boleh null agar tidak error saat seeding
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('level', ['warga', 'admin']);
             $table->string('password');
