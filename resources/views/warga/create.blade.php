@@ -25,10 +25,7 @@
             <input type="text" name="nama" class="form-control" placeholder="Masukkan nama lengkap" value="{{ old('nama') }}" required>
         </div>
 
-        <div class="mb-3">
-            <label for="nik" class="form-label">NIK</label>
-            <input type="text" name="nik" class="form-control" placeholder="Masukkan NIK" value="{{ old('nik') }}" required>
-        </div>
+       
 
         <div class="mb-3">
             <label for="alamat" class="form-label">Alamat</label>

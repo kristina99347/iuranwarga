@@ -14,27 +14,28 @@ class WargaController extends Controller
         return view('warga.index', compact('wargas'));
     }
 
-    // ✅ Tampilkan form tambah warga
+    // ✅ Form tambah data warga
     public function create()
     {
         return view('warga.create');
     }
 
-    // ✅ Simpan data warga baru
+    // ✅ Simpan data warga
     public function store(Request $request)
     {
         $request->validate([
-            'nama'   => 'required',
-            'alamat' => 'required',
-            'nohp'   => 'required',
+            'nama'       => 'required',
+            'alamat'     => 'required',
+            'nohp'       => 'required',
+            'pembayaran' => 'nullable|numeric', // tambahkan pembayaran
         ]);
 
-        Warga::create($request->all());
+        Warga::create($request->only(['nama', 'alamat', 'nohp', 'pembayaran']));
 
         return redirect()->route('warga.index')->with('success', 'Data warga berhasil ditambahkan.');
     }
 
-    // ✅ Tampilkan form edit data warga
+    // ✅ Form edit data warga
     public function edit($id)
     {
         $warga = Warga::findOrFail($id);
@@ -45,13 +46,14 @@ class WargaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama'   => 'required',
-            'alamat' => 'required',
-            'nohp'   => 'required',
+            'nama'       => 'required',
+            'alamat'     => 'required',
+            'nohp'       => 'required',
+            'pembayaran' => 'nullable|numeric',
         ]);
 
         $warga = Warga::findOrFail($id);
-        $warga->update($request->all());
+        $warga->update($request->only(['nama', 'alamat', 'nohp', 'pembayaran']));
 
         return redirect()->route('warga.index')->with('success', 'Data warga berhasil diperbarui.');
     }

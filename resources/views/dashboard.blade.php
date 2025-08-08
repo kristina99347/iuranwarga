@@ -16,9 +16,8 @@
                 </div>
                 <div class="card-footer text-white">
                     <a href="{{ route('warga.index') }}" class="btn btn-light">
-    Lihat Data <i class="fas fa-arrow-circle-right"></i>
-</a>
-
+                        Lihat Data <i class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -31,7 +30,7 @@
                     <p class="card-text">Iuran Kas</p>
                 </div>
                 <div class="card-footer text-white">
-                    <a href="{{ route('iuran.index') }}" class="text-white text-decoration-none">
+                    <a href="{{ route('iuran.index') }}" class="btn btn-light">
                         Lihat Data <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>

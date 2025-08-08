@@ -41,6 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])
     ->middleware('auth')
     ->name('home');
+
+
 Route::get('/warga', [WargaController::class, 'index'])->name('warga.index');
 Route::get('/warga/create', [WargaController::class, 'create'])->name('warga.create');
 Route::post('/warga/store', [WargaController::class, 'store'])->name('warga.store');
+Route::get('/warga/{id}/edit', [WargaController::class, 'edit'])->name('warga.edit');
+Route::put('/warga/{id}', [WargaController::class, 'update'])->name('warga.update');
+Route::delete('/warga/{id}', [WargaController::class, 'destroy'])->name('warga.destroy');
+
+Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
