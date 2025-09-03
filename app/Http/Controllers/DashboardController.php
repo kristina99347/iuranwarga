@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Payment;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $warga_count = User::where('level', 'warga')->count();
-        $payment_count = Payment::count();
+        $user = Auth::user(); // ambil user yang sedang login
 
-        return view('dashboard', compact('warga_count', 'payment_count'));
+        return view('dashboard', compact('user'));
     }
 }

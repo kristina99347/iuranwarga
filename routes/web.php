@@ -7,7 +7,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\IuranController;
-
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\KategoriIuranController;
+use App\Http\Controllers\AdminIuranController;
 
 // ✅ Route halaman utama (beranda, hanya jika login)
 Route::get('/', [HomeController::class, 'index'])
@@ -50,4 +52,34 @@ Route::get('/warga/{id}/edit', [WargaController::class, 'edit'])->name('warga.ed
 Route::put('/warga/{id}', [WargaController::class, 'update'])->name('warga.update');
 Route::delete('/warga/{id}', [WargaController::class, 'destroy'])->name('warga.destroy');
 
-Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+
+
+Route::resource('pembayaran', PembayaranController::class);
+
+
+
+Route::resource('kategori', KategoriIuranController::class);
+
+Route::resource('iuran', IuranController::class);
+
+
+
+use App\Http\Controllers\OfficerController;
+
+Route::resource('officer', OfficerController::class);
+
+
+
+
+
+Route::get('/admin/beranda', [AdminController::class, 'index'])->name('beranda.admin');
+Route::get('/warga/beranda', [WargaController::class, 'index'])->name('beranda.warga');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Dashboard umum
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Dashboard khusus admin
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('beranda.admin');
+
+// Dashboard khusus warga
+Route::get('/warga/dashboard', [WargaController::class, 'index'])->name('beranda.warga');

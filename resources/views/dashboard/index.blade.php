@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('content')
 <div class="container mt-4">
@@ -6,7 +6,7 @@
 
     <div class="row justify-content-center">
         <!-- Card: Data Warga -->
-        <div class="col-md-5 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card text-white bg-success shadow">
                 <div class="card-body">
                     <h3 class="card-title text-center">{{ $jumlahWarga ?? 0 }}</h3>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Card: Iuran Kas -->
-        <div class="col-md-5 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card text-white bg-primary shadow">
                 <div class="card-body">
                     <h3 class="card-title text-center">{{ $jumlahIuran ?? 0 }}</h3>
@@ -34,10 +34,55 @@
                 </div>
             </div>
         </div>
+
+        <!-- Card: Pembayaran -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-white bg-info shadow">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{{ $jumlahPembayaran ?? 0 }}</h3>
+                    <p class="text-center">Pembayaran</p>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <a href="{{ route('pembayaran.index') }}" class="btn btn-light btn-sm">
+                        <i class="fas fa-arrow-circle-right"></i> Lihat Data
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card: Kategori Iuran -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-white bg-danger shadow">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{{ $jumlahKategori ?? 0 }}</h3>
+                    <p class="text-center">Kategori Iuran</p>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <a href="{{ route('kategori.index') }}" class="btn btn-light btn-sm">
+                        <i class="fas fa-arrow-circle-right"></i> Lihat Data
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card: Data Officer -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-white bg-warning shadow">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{{ $jumlahOfficer ?? 0 }}</h3>
+                    <p class="text-center">Data Officer</p>
+                </div>
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <a href="{{ route('officer.index') }}" class="btn btn-light btn-sm">
+                        <i class="fas fa-arrow-circle-right"></i> Lihat Data
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <p class="text-center mt-4 text-muted">
         &copy; {{ date('Y') }} <strong>Aplikasi Iuran Warga</strong>. All rights reserved.
     </p>
 </div>
-@endsection
+@endsection 

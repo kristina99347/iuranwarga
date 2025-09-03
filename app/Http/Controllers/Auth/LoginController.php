@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -27,17 +26,19 @@ class LoginController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        $loginField = $request->input('username');
-        $password = $request->input('password');
+        $credentials = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
 
-        // Coba login dengan kolom username
-        if (Auth::attempt(['username' => $loginField, 'password' => $password])) {
+        // coba login dengan username
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return $this->redirectBasedOnRole();
         }
 
-        // Coba login dengan kolom name
-        if (Auth::attempt(['name' => $loginField, 'password' => $password])) {
+        // coba login dengan name
+        if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
             return $this->redirectBasedOnRole();
         }
@@ -48,19 +49,20 @@ class LoginController extends Controller
     }
 
     /**
-     * Redirect berdasarkan role.
+     * Redirect berdasarkan role/level.
      */
     protected function redirectBasedOnRole()
     {
         $user = Auth::user();
 
-        if ($user->role === 'admin') {
-            return redirect()->route('beranda.admin');
-        } elseif ($user->role === 'warga1') {
-            return redirect()->route('beranda.warga');
-        } else {
-            return redirect()->route('home');
+        // pastikan kolomnya sesuai: role atau level
+        if ($user->level === 'admin') {
+            return redirect()->route('beranda.admin'); // pastikan route ada
+        } elseif ($user->level === 'warga1') {
+            return redirect()->route('beranda.warga'); // pastikan route ada
         }
+
+        return redirect()->route('home');
     }
 
     /**

@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('iurans', function (Blueprint $table) {
+        Schema::create('kategori_iuran', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_kategori');   // contoh: Iuran Bulanan, Iuran Tahunan
+            $table->decimal('nominal', 12, 2)->default(0); // jumlah uang
+            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('iurans');
+        Schema::dropIfExists('kategori_iuran');
     }
 };

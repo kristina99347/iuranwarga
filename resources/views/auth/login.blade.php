@@ -22,10 +22,10 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('loginn') }}">
+                    <form method="GET" action="{{ route('home') }}">
                         @csrf
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username / Nama</label>
+                            <label for="username" class="form-label">Username </label>
                             <input 
                                 type="text" 
                                 name="username" 

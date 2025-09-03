@@ -9,8 +9,22 @@ class Warga extends Model
 {
     use HasFactory;
 
-    protected $table = 'warga'; // Pastikan table ini benar
+    // Nama tabel di database
+    protected $table = 'warga';
 
-    // Tambahkan semua kolom yang bisa diisi
-    protected $fillable = ['nama', 'nik', 'alamat', 'nohp'];
+    // Kolom yang boleh diisi (mass assignment)
+    protected $fillable = [
+        'nama',
+        'nik',
+        'alamat',
+        'nohp'
+    ];
+
+    /**
+     * Relasi: Satu warga bisa punya banyak pembayaran
+     */
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'warga_id');
+    }
 }

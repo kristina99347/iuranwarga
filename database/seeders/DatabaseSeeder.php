@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
@@ -44,38 +43,32 @@ class DatabaseSeeder extends Seeder
             'updated_at' => $now,
         ]);
 
-        // ✅ Seed data dues_categories
-        // DB::table('dues_categories')->insert([
-        //     [
-        //         'period' => 'bulanan',
-        //         'nominal' => 50000,
-        //         'status' => 'aktif',
-        //         'created_at' => $now,
-        //         'updated_at' => $now,
-        //     ],
-        //     [
-        //         'period' => 'tahunan',
-        //         'nominal' => 600000,
-        //         'status' => 'aktif',
-        //         'created_at' => $now,
-        //         'updated_at' => $now,
-        //     ]
-        // ]);
+        // ✅ Seed data kategori_iuran
+        DB::table('kategori_iuran')->insert([
+            [
+                'nama_kategori' => 'Iuran Kebersihan',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nama_kategori' => 'Iuran Keamanan',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nama_kategori' => 'Iuran Pembangunan',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]
+        ]);
 
-        // ✅ Seed data dues_members
-        // DB::table('dues_members')->insert([
+        // ✅ (Opsional) Seed data iuran
+        // DB::table('iuran')->insert([
         //     'iduser' => 2,
-        //     'idduescategory' => 1,
-        //     'created_at' => $now,
-        //     'updated_at' => $now,
-        // ]);
-
-        // // ✅ Seed data payments
-        // DB::table('payments')->insert([
-        //     'iduser' => 2,
-        //     'period' => '2025-08',
-        //     'nominal' => 50000,
-        //     'petugas' => 'admin',
+        //     'idkategori' => 1,
+        //     'jumlah' => 50000,
+        //     'periode' => '2025-09',
+        //     'status' => 'belum bayar',
         //     'created_at' => $now,
         //     'updated_at' => $now,
         // ]);
